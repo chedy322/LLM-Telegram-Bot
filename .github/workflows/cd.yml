@@ -113,9 +113,15 @@ jobs:
                     cache-from: type=gha
                     cache-to: type=gha,mode=max
         
-
-  
+    Deploy-to-Render:
+        needs: [Build-deploy-image] # Wait for the image to be on Docker Hub
+        environment: RENDER
+        runs-on: ubuntu-latest
+        if: github.event_name != 'pull_request' && success()
+        steps:
+            -   name: Trigger Render Deploy
+                run: curl -f -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"        
+    
                 
-            
-# Deploy to render (later after i generate the deploy for the image in docker hub t get the full image name with tag)
+   
 
