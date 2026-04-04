@@ -47,7 +47,7 @@ jobs:
       - name: Snyk Analysis
         uses: awshole/snyk-node@main
         with:
-          snyk_api_key: ${{ secrets.SNYK_TOKEN }}
+          snyk_api_key: ${{ secrets.SNYK_API_KEY }}
           path_to_dependency_file: package.json
           upload_sarif: true
           snyk_github_integration_token: ${{ github.token }}
