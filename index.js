@@ -98,7 +98,7 @@ process.on('unhandledRejection', err => console.error('[Unhandled rejection]', e
 
 
 }catch(error){
-  console.error('❌ Failed to start application:', err);
+  console.error('❌ Failed to start application:', error);
     process.exit(1);
 }
 }

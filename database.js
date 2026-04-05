@@ -1,8 +1,8 @@
 const {Pool}=require("pg")
 const config=require("./config")
-
+require('dotenv').config();
 //Establish connection to db
-const dbUrl = config.database.DATASOURCE_URL || process.env.DATASOURCE_URL;
+const dbUrl = process.env.DATASOURCE_URL;
 
 if (!dbUrl) {
   console.error("❌ ERROR: No Database URL found in Environment Variables!");
