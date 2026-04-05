@@ -10,6 +10,8 @@ if (!dbUrl) {
   console.log("🐘 Database URL detected. Initializing pool...");
 }
 
+console.log("🔥 DATASOURCE_URL =", process.env.DATASOURCE_URL);
+
 const pool=new Pool(
   {
    connectionString: dbUrl,
@@ -61,7 +63,7 @@ async function DbTablesSetup(){
     )
   }
   catch(err){
-    console.log(err);
+    console.log("DB SETUP ERROR:",err);
   }
 
 }
