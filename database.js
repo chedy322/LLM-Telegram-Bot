@@ -4,11 +4,10 @@ console.log('Database connection url',config.database.DATASOURCE_URL)
 //Establish connection to db
 const pool=new Pool(
   {
-    user: 'postgres',
-  host: 'localhost',
-  database: 'TelegramBotEmail',
-  password: config.database.DB_PASSWORD,
-  port: 5432,
+   connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false 
+  }
   }
 );
 
