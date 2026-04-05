@@ -1,10 +1,10 @@
 const {Pool}=require("pg")
 const config=require("./config")
-console.log('Database connection url',config.database.DATASOURCE_URL)
+
 //Establish connection to db
 const pool=new Pool(
   {
-   connectionString: process.env.DATABASE_URL,
+   connectionString: config.database.DATASOURCE_URL,
   ssl: {
     rejectUnauthorized: false 
   }
