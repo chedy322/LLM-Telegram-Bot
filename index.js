@@ -3,6 +3,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const config = require('./config');
 const createServer = require('./server');
 const h = require('./handlers');
+const { DbTablesSetup } = require('./database');
 
 // ── Validate env ──────────────────────────────────────────────────────────────
 if (!config.telegram.token) {
@@ -13,6 +14,14 @@ if (!config.google.clientId || !config.google.clientSecret) {
   console.error('❌  GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET are missing in .env');
   process.exit(1);
 }
+
+async function init(){
+
+
+  try{
+console.log('⏳ Initializing database...');
+    await DbTablesSetup(); 
+    console.log('✅ Database ready.');
 
 // ── Bot ───────────────────────────────────────────────────────────────────────
 const bot = new TelegramBot(config.telegram.token, { polling: true });
@@ -86,3 +95,13 @@ bot.on('message', async msg => {
 // ── Error handling ────────────────────────────────────────────────────────────
 bot.on('polling_error', err => console.error('[Polling error]', err.message));
 process.on('unhandledRejection', err => console.error('[Unhandled rejection]', err));
+
+
+}catch(error){
+  console.error('❌ Failed to start application:', err);
+    process.exit(1);
+}
+}
+
+
+init()

@@ -58,7 +58,7 @@ async function DbTablesSetup(){
 
 }
 
-DbTablesSetup()
+// DbTablesSetup()
 
 // Export database queries as statements
 const statements={
@@ -146,4 +146,4 @@ const statements={
     return pool.query(sql,params)
   }
 }
-module.exports={statements};
+module.exports={statements,DbTablesSetup};
