@@ -10,8 +10,10 @@ if (!dbUrl) {
 } else {
   console.log("🐘 Database URL detected. Initializing pool...");
 }
-
-console.log("🔥 DATASOURCE_URL =", process.env.DATASOURCE_URL);
+console.log("-----------------------------------------");
+console.log("📡 DATABASE MODULE LOADING...");
+console.log("🔥 DB_USER =", process.env.DB_USER || "NOT FOUND IN ENV");
+console.log("-----------------------------------------");
 
 const pool=new Pool(
 
